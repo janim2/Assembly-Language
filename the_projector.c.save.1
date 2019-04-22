@@ -1,0 +1,106 @@
+// Type your code here, or load an example.
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main() {
+    printf("TURNING ON...");
+    // starting projector options
+    menu();
+
+    return 0;
+}
+
+void menu () {    
+    printf("\nMENU");
+
+    printf("\n\n1.Image \n2.Signal \n3.Settings \n4. Info \n5.Reset \n6. Power Off \n7.Hibernate");
+
+    int option, image_select,the_source,lAdjustments,lAdjustmentOptions;
+    
+    printf("\n\nEnter Option: ");
+    
+    if (option == 1){
+        printf("IMAGE SETTINGS... ");
+        printf("\n\n1.select Image \n2.adjust Image\n\n3.BACK\n ");
+
+        //scanf("%c", &image_select);
+       
+    } else if(option == 2){
+        printf("SIGNAL SETTINGS ...\n");
+        printf("1.HDMI \n2.VGA \n3.USB\n\n4.BACK\n");
+       
+    }else if (option == 3){
+        printf("OTHER SETTINGS ...\n");
+        //TODO
+        //Settings -> lens adjustment ->
+        // zoom & focus, resolution, sound adjustment
+        printf("1.lens adjustment.\n\n2.BACK\n");
+        //scanf("%c", &lAdjustments);
+        if(lAdjustments == '1'){
+            printf("ADJUST LENS OPTIONS ...");
+            printf("1.Zoom and Focus \n2.Resolution");
+           // scanf("%c", &lAdjustmentOptions);
+            if(lAdjustmentOptions == '1'){
+                 printf("ZOOM & FOCUS OPTIONS ...");
+                 printf("Please Wait...\nWe are zooming and focusing the screen.");
+                 menu();
+            }else if(lAdjustmentOptions){
+                printf("RESOLUTION OPTIONS ...");
+                printf("Please Wait ...\nWe are fixing screen resolutions");
+                menu();
+            }
+        }
+    }else if(option == 4){
+        printf("PROJECTOR INFO ...\n");
+        printf("ASSMEBLY LANGUAGE PROJECTOR\n 1.0 \n GROUP N\n\n1. BACK\n");
+	
+    }
+    else if(option == 5){
+        printf("RESET OPTIONS\n");
+        printf("Do you want to reset\n");
+        printf("1.Yes \n2.No\n\n");
+        char yes_no;
+        printf("Are you Sure You want to Reset?\n");
+        printf("Y or N\n");
+        scanf("%c", &yes_no);
+        if(yes_no == 'Y' || yes_no == 'y'){
+            printf("RESETTING...");
+            menu();
+        }
+        else if(yes_no == 'N' || yes_no == 'n'){
+            menu();
+        } 
+    }
+    else if(option == 6){
+        char yes_no;
+        printf("Are you Sure we want to Power Off.\n");
+        printf("Y or N\n");
+        scanf("%c", &yes_no);
+        if(yes_no == 'Y' || yes_no == 'y'){
+            printf("TURNING OFF...");
+            exit(0);
+        }
+        else if(yes_no == 'N' || yes_no == 'n'){
+            menu();
+        }  
+    }
+    else if(option == 7){
+        char yes_no;
+        printf("Are you Sure we want to Hibernate.\n");
+        printf("Y or N\n");
+        scanf("%c", &yes_no);
+        if(yes_no == 'Y' || yes_no == 'y'){
+            printf(" HIBERNATING...");
+            exit(0);
+        }
+        else if(yes_no == 'N' || yes_no == 'n'){
+            menu();
+        } 
+    }
+    else {
+        printf("INVALID INPUT");
+        menu();
+    }
+}
+

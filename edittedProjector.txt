@@ -1,0 +1,490 @@
+// Type your code here, or load an example.
+#include <stdio.h>
+
+int _start() {
+    printf("TURNING ON...");
+    // starting projector options
+    projector_options();
+
+    return 0;
+}
+
+void menu () {    
+    printf("MENU");
+
+    printf("1. Image \n2.Signal \n3.Settings \n4. Info \n5.Reset \n6. Power Off \n7.Hibernate");
+
+    char option, image_select,the_source,lAdjustments,lAdjustmentOptions;
+    scanf("%c", option);
+    if (option == '1'){
+        printf("IMAGE SETTINGS... ");
+        printf("1.select Image \n2.adjust Image ");
+
+        scanf("%c", image_select);
+        if(image_select == '1'){
+            printf("Image is Selecting...\n Please Wait...");
+            menu();
+        }else if(image_select == '2'){
+            printf("Adjusting image...\n Please Wait...");
+            menu();
+        }else{
+            printf("Invalid input");
+            menu();
+        } 
+    } else if(option == '2'){
+        printf("SIGNAL SETTINGS ...");
+        printf("1.HDMI \n2.VGA \n3.USB");
+        scanf("%c", the_source);
+        if (the_source == '1'){
+            printf("signal CHANGING TO HDMI");
+            menu();
+        }else if(the_source == '2'){
+            printf("signal CHANGING TO VGA");
+            menu();
+        }else if(the_source == '3'){
+            printf("signal CHANGING TO USB");
+            menu();
+        }else{
+            printf("Invalid input");
+            menu();
+        }
+
+    }else if (option == '3'){
+        printf("OTHER SETTINGS ...");
+        //TODO
+        //Settings -> lens adjustment ->
+        // zoom & focus, resolution, sound adjustment
+        printf("1.lens adjustment.");
+        scanf("%c", lAdjustments);
+        if(lAdjustments == '1'){
+            printf("ADJUST LENS OPTIONS ...");
+            prinf("1.Zoom and Focus \n2.Resolution");
+            scanf("%c", lAdjustmentOptions);
+            if(lAdjustmentOptions == '1'){
+                 printf("ZOOM & FOCUS OPTIONS ...");
+                 prinf("Please Wait...\nWe are zooming and focusing the screen.");
+                 menu();
+            }else if(lAdjustmentOptions){
+                printf("RESOLUTION OPTIONS ...");
+                printf("Please Wait ...\nWe are fixing screen resolutions");
+                menu();
+            }
+        }
+    }else if(option == '4'){
+        printf("PROJECTOR INFO ...");
+        printf("ASSMEBLY LANGUAGE PROJECTOR\n 1.0 \n GROUP N");
+        menu();
+    }
+    else if(option == '5'){
+        printf("RESET OPTIONS");
+        printf("Do you want to reset");
+        printf("1.Yes \n2.No");
+        char yes_no;
+        printf("Are you Sure You want to Reset?");
+        printf("Y or N");
+        scanf("%c", yes_no);
+        if(yes_no == 'Y' || yes_no == 'y'){
+            printf("RESETTING...");
+            projector_options();
+        }
+        else if(yes_no == 'N' || yes_no == 'n'){
+            menu();
+        } 
+    }
+    else if(option == '5'){
+        char yes_no;
+        printf("Are you Sure we want to Power Off.");
+        printf("Y or N");
+        scanf("%c", yes_no);
+        if(yes_no == 'Y' || yes_no == 'y'){
+            printf("TURNING OFF...");
+            exit(0);
+        }
+        else if(yes_no == 'N' || yes_no == 'n'){
+            menu();
+        }  
+    }
+    else if(option == '6'){
+        char yes_no;
+        printf("Are you Sure we want to Hibernate.");
+        printf("Y or N");
+        scanf("%c", yes_no);
+        if(yes_no == 'Y' || yes_no == 'y'){
+            printf(" HIBERNATING...");
+            exit(0);
+        }
+        else if(yes_no == 'N' || yes_no == 'n'){
+            menu();
+        } 
+    }
+    else {
+        printf("INVALID INPUT");
+        menu();
+    }
+}
+
+
+the assembler code
+
+.LC0:
+        .string "TURNING ON..."
+_start:
+        push    rbp
+        mov     rbp, rsp
+        mov     edi, OFFSET FLAT:.LC0
+        mov     eax, 0
+        call    printf
+        mov     eax, 0
+        call    projector_options
+        mov     eax, 0
+        pop     rbp
+        ret
+.LC1:
+        .string "MENU"
+.LC2:
+        .string "1. Image \n2.Signal \n3.Settings \n4. Info \n5.Reset \n6. Power Off \n7.Hibernate"
+.LC3:
+        .string "%c"
+.LC4:
+        .string "IMAGE SETTINGS... "
+.LC5:
+        .string "1.select Image \n2.adjust Image "
+.LC6:
+        .string "Image is Selecting...\n Please Wait..."
+.LC7:
+        .string "Adjusting image...\n Please Wait..."
+.LC8:
+        .string "Invalid input"
+.LC9:
+        .string "SIGNAL SETTINGS ..."
+.LC10:
+        .string "1.HDMI \n2.VGA \n3.USB"
+.LC11:
+        .string "signal CHANGING TO HDMI"
+.LC12:
+        .string "signal CHANGING TO VGA"
+.LC13:
+        .string "signal CHANGING TO USB"
+.LC14:
+        .string "OTHER SETTINGS ..."
+.LC15:
+        .string "1.lens adjustment."
+.LC16:
+        .string "ADJUST LENS OPTIONS ..."
+.LC17:
+        .string "1.Zoom and Focus \n2.Resolution"
+.LC18:
+        .string "ZOOM & FOCUS OPTIONS ..."
+.LC19:
+        .string "Please Wait...\nWe are zooming and focusing the screen."
+.LC20:
+        .string "RESOLUTION OPTIONS ..."
+.LC21:
+        .string "Please Wait ...\nWe are fixing screen resolutions"
+.LC22:
+        .string "PROJECTOR INFO ..."
+.LC23:
+        .string "ASSMEBLY LANGUAGE PROJECTOR\n 1.0 \n GROUP N"
+.LC24:
+        .string "RESET OPTIONS"
+.LC25:
+        .string "Do you want to reset"
+.LC26:
+        .string "1.Yes \n2.No"
+.LC27:
+        .string "Are you Sure You want to Reset?"
+.LC28:
+        .string "Y or N"
+.LC29:
+        .string "RESETTING..."
+.LC30:
+        .string "Are you Sure we want to Power Off."
+.LC31:
+        .string "TURNING OFF..."
+.LC32:
+        .string "Are you Sure we want to Hibernate."
+.LC33:
+        .string " HIBERNATING..."
+.LC34:
+        .string "INVALID INPUT"
+menu:
+        push    rbp
+        mov     rbp, rsp
+        sub     rsp, 16
+        mov     edi, OFFSET FLAT:.LC1
+        mov     eax, 0
+        call    printf
+        mov     edi, OFFSET FLAT:.LC2
+        mov     eax, 0
+        call    printf
+        movsx   eax, BYTE PTR [rbp-1]
+        mov     esi, eax
+        mov     edi, OFFSET FLAT:.LC3
+        mov     eax, 0
+        call    __isoc99_scanf
+        cmp     BYTE PTR [rbp-1], 49
+        jne     .L4
+        mov     edi, OFFSET FLAT:.LC4
+        mov     eax, 0
+        call    printf
+        mov     edi, OFFSET FLAT:.LC5
+        mov     eax, 0
+        call    printf
+        movsx   eax, BYTE PTR [rbp-2]
+        mov     esi, eax
+        mov     edi, OFFSET FLAT:.LC3
+        mov     eax, 0
+        call    __isoc99_scanf
+        cmp     BYTE PTR [rbp-2], 49
+        jne     .L5
+        mov     edi, OFFSET FLAT:.LC6
+        mov     eax, 0
+        call    printf
+        mov     eax, 0
+        call    menu
+        jmp     .L33
+.L5:
+        cmp     BYTE PTR [rbp-2], 50
+        jne     .L7
+        mov     edi, OFFSET FLAT:.LC7
+        mov     eax, 0
+        call    printf
+        mov     eax, 0
+        call    menu
+        jmp     .L33
+.L7:
+        mov     edi, OFFSET FLAT:.LC8
+        mov     eax, 0
+        call    printf
+        mov     eax, 0
+        call    menu
+        jmp     .L33
+.L4:
+        cmp     BYTE PTR [rbp-1], 50
+        jne     .L9
+        mov     edi, OFFSET FLAT:.LC9
+        mov     eax, 0
+        call    printf
+        mov     edi, OFFSET FLAT:.LC10
+        mov     eax, 0
+        call    printf
+        movsx   eax, BYTE PTR [rbp-3]
+        mov     esi, eax
+        mov     edi, OFFSET FLAT:.LC3
+        mov     eax, 0
+        call    __isoc99_scanf
+        cmp     BYTE PTR [rbp-3], 49
+        jne     .L10
+        mov     edi, OFFSET FLAT:.LC11
+        mov     eax, 0
+        call    printf
+        mov     eax, 0
+        call    menu
+        jmp     .L33
+.L10:
+        cmp     BYTE PTR [rbp-3], 50
+        jne     .L12
+        mov     edi, OFFSET FLAT:.LC12
+        mov     eax, 0
+        call    printf
+        mov     eax, 0
+        call    menu
+        jmp     .L33
+.L12:
+        cmp     BYTE PTR [rbp-3], 51
+        jne     .L13
+        mov     edi, OFFSET FLAT:.LC13
+        mov     eax, 0
+        call    printf
+        mov     eax, 0
+        call    menu
+        jmp     .L33
+.L13:
+        mov     edi, OFFSET FLAT:.LC8
+        mov     eax, 0
+        call    printf
+        mov     eax, 0
+        call    menu
+        jmp     .L33
+.L9:
+        cmp     BYTE PTR [rbp-1], 51
+        jne     .L14
+        mov     edi, OFFSET FLAT:.LC14
+        mov     eax, 0
+        call    printf
+        mov     edi, OFFSET FLAT:.LC15
+        mov     eax, 0
+        call    printf
+        movsx   eax, BYTE PTR [rbp-4]
+        mov     esi, eax
+        mov     edi, OFFSET FLAT:.LC3
+        mov     eax, 0
+        call    __isoc99_scanf
+        cmp     BYTE PTR [rbp-4], 49
+        jne     .L33
+        mov     edi, OFFSET FLAT:.LC16
+        mov     eax, 0
+        call    printf
+        mov     edi, OFFSET FLAT:.LC17
+        mov     eax, 0
+        call    prinf
+        movsx   eax, BYTE PTR [rbp-5]
+        mov     esi, eax
+        mov     edi, OFFSET FLAT:.LC3
+        mov     eax, 0
+        call    __isoc99_scanf
+        cmp     BYTE PTR [rbp-5], 49
+        jne     .L16
+        mov     edi, OFFSET FLAT:.LC18
+        mov     eax, 0
+        call    printf
+        mov     edi, OFFSET FLAT:.LC19
+        mov     eax, 0
+        call    prinf
+        mov     eax, 0
+        call    menu
+        jmp     .L33
+.L16:
+        cmp     BYTE PTR [rbp-5], 0
+        je      .L33
+        mov     edi, OFFSET FLAT:.LC20
+        mov     eax, 0
+        call    printf
+        mov     edi, OFFSET FLAT:.LC21
+        mov     eax, 0
+        call    printf
+        mov     eax, 0
+        call    menu
+        jmp     .L33
+.L14:
+        cmp     BYTE PTR [rbp-1], 52
+        jne     .L17
+        mov     edi, OFFSET FLAT:.LC22
+        mov     eax, 0
+        call    printf
+        mov     edi, OFFSET FLAT:.LC23
+        mov     eax, 0
+        call    printf
+        mov     eax, 0
+        call    menu
+        jmp     .L33
+.L17:
+        cmp     BYTE PTR [rbp-1], 53
+        jne     .L18
+        mov     edi, OFFSET FLAT:.LC24
+        mov     eax, 0
+        call    printf
+        mov     edi, OFFSET FLAT:.LC25
+        mov     eax, 0
+        call    printf
+        mov     edi, OFFSET FLAT:.LC26
+        mov     eax, 0
+        call    printf
+        mov     edi, OFFSET FLAT:.LC27
+        mov     eax, 0
+        call    printf
+        mov     edi, OFFSET FLAT:.LC28
+        mov     eax, 0
+        call    printf
+        movsx   eax, BYTE PTR [rbp-6]
+        mov     esi, eax
+        mov     edi, OFFSET FLAT:.LC3
+        mov     eax, 0
+        call    __isoc99_scanf
+        cmp     BYTE PTR [rbp-6], 89
+        je      .L19
+        cmp     BYTE PTR [rbp-6], 121
+        jne     .L20
+.L19:
+        mov     edi, OFFSET FLAT:.LC29
+        mov     eax, 0
+        call    printf
+        mov     eax, 0
+        call    projector_options
+        nop
+        jmp     .L33
+.L20:
+        cmp     BYTE PTR [rbp-6], 78
+        je      .L22
+        cmp     BYTE PTR [rbp-6], 110
+        jne     .L33
+.L22:
+        mov     eax, 0
+        call    menu
+        jmp     .L33
+.L18:
+        cmp     BYTE PTR [rbp-1], 53
+        jne     .L23
+        mov     edi, OFFSET FLAT:.LC30
+        mov     eax, 0
+        call    printf
+        mov     edi, OFFSET FLAT:.LC28
+        mov     eax, 0
+        call    printf
+        movsx   eax, BYTE PTR [rbp-7]
+        mov     esi, eax
+        mov     edi, OFFSET FLAT:.LC3
+        mov     eax, 0
+        call    __isoc99_scanf
+        cmp     BYTE PTR [rbp-7], 89
+        je      .L24
+        cmp     BYTE PTR [rbp-7], 121
+        jne     .L25
+.L24:
+        mov     edi, OFFSET FLAT:.LC31
+        mov     eax, 0
+        call    printf
+        mov     edi, 0
+        call    exit
+.L25:
+        cmp     BYTE PTR [rbp-7], 78
+        je      .L26
+        cmp     BYTE PTR [rbp-7], 110
+        jne     .L33
+.L26:
+        mov     eax, 0
+        call    menu
+        jmp     .L33
+.L23:
+        cmp     BYTE PTR [rbp-1], 54
+        jne     .L28
+        mov     edi, OFFSET FLAT:.LC32
+        mov     eax, 0
+        call    printf
+        mov     edi, OFFSET FLAT:.LC28
+        mov     eax, 0
+        call    printf
+        movsx   eax, BYTE PTR [rbp-8]
+        mov     esi, eax
+        mov     edi, OFFSET FLAT:.LC3
+        mov     eax, 0
+        call    __isoc99_scanf
+        cmp     BYTE PTR [rbp-8], 89
+        je      .L29
+        cmp     BYTE PTR [rbp-8], 121
+        jne     .L30
+.L29:
+        mov     edi, OFFSET FLAT:.LC33
+        mov     eax, 0
+        call    printf
+        mov     edi, 0
+        call    exit
+.L30:
+        cmp     BYTE PTR [rbp-8], 78
+        je      .L31
+        cmp     BYTE PTR [rbp-8], 110
+        jne     .L33
+.L31:
+        mov     eax, 0
+        call    menu
+        jmp     .L33
+.L28:
+        mov     edi, OFFSET FLAT:.LC34
+        mov     eax, 0
+        call    printf
+        mov     eax, 0
+        call    menu
+.L33:
+        nop
+        leave
+        ret
